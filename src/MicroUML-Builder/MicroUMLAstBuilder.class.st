@@ -89,6 +89,119 @@ MicroUMLAstBuilder class >> empty [
 ]
 
 { #category : 'examples' }
+MicroUMLAstBuilder class >> example2Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#AbstractSeries // ''the base class of story published in series.''
+	- #name @ String // ''the title of the story''
+	- #numEpisodes @ Integer % #private // ''the number of episodes in the story''
+	> #findByName % #abstract // ''search by name''
+=== 
+#NovelSeries 
+	--|> #AbstractSeries
+	- #author @ String 
+	- #Publisher @ String 
+=== 
+#ComicSeries 
+	--|> #AbstractSeries 
+	- #toonAuthor @ String
+	- #storyAuthor @ String % #private
+	> #print~{} 
+=== 
+#AnimeSeries
+	--|> #AbstractSeries 
+	- #director @ String 
+	- #animators @ String % #private
+	- #voiceActors @ String % #private
+	> #play~{} 
+	<>--#ComicSeries 
+	    @ (nil -> ''based on'') 
+=== 
+#AnimeSeries	 -- #NovelSeries
+	    @ (nil -> ''original'') 
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
+MicroUMLAstBuilder class >> example30Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#''AbstractSeries: Joe'' // ''the base class of story published in series.''
+	- #name @ String // ''the title of the story''
+	- #numEpisodes @ Integer % #private // ''the number of episodes in the story''
+
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
+MicroUMLAstBuilder class >> example31Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#''AbstractSeries: Joe'' // ''the base class of story published in series.''
+	- #name @ String // ''the title of the story''
+	- #numEpisodes @ Integer % #private // ''the number of episodes in the story''
+	> #findByName % #abstract // ''search by name''
+
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
+MicroUMLAstBuilder class >> example32Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#''AbstractSeries: Joe'' // ''the base class of story published in series.''
+	> #findByName % #abstract // ''search by name''
+
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
+MicroUMLAstBuilder class >> example34Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#''AbstractSeries: Joe'' // ''the base class of story published in series.''
+	- String empty // ''the title of the story''
+	- #numEpisodes @ Integer % #private // ''the number of episodes in the story''
+
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
 MicroUMLAstBuilder class >> exampleMicrodown [
 
 	^ (MicrodownPresenter new document: '
