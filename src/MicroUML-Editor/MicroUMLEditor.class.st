@@ -105,19 +105,13 @@ MicroUMLEditor >> disableLiveDrawing [
 MicroUMLEditor >> drawDiagram [
 
 	| diagram astNodeInteraction |
-	diagram := (code text trimmed
-		            ifEmpty: [ MicroUMLAstBuilder new ]
-		            ifNotEmpty: [ self compileUml ]) diagram.
-	diagram announcer
-		when: MicroUMLClassDiagramChangedAnnouncement
-		send: #diagramChanged:
-		to: self.
+	diagram := (code text trimBoth ifEmpty: [ MicroUMLAstBuilder new ] ifNotEmpty: [ self compileUml ]) diagram.
+	diagram announcer when: MicroUMLClassDiagramChangedAnnouncement send: #diagramChanged: to: self.
 	builder classDiagramNode: diagram.
 	builder canvas shapes copy do: [ :shape | shape remove ].
 	builder build.
 	astNodeInteraction := MicroUMLBrowserNodeInteraction new.
-	builder canvas allChildren do: [ :shape |
-		shape model isMicroUMLAstNode ifTrue: [ shape @ astNodeInteraction ] ].
+	builder canvas allChildren do: [ :shape | shape model isMicroUMLAstNode ifTrue: [ shape @ astNodeInteraction ] ].
 	builder canvas @ (MicroUMLCanvasController new builder: builder).
 	builder canvas @ (MicroUMLClassDiagramNodeInteraction new
 		 diagram: diagram;

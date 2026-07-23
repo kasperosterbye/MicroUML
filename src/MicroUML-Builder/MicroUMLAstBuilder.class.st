@@ -202,6 +202,22 @@ extent: 600 @ 400
 ]
 
 { #category : 'examples' }
+MicroUMLAstBuilder class >> example35Microdown [
+
+	^ (MicrodownPresenter new document: '
+Example of novel and comic derrived from anime
+
+```pharoscript
+MU
+===
+#''AbstractSeries: Joe'' 
+
+extent: 600 @ 400
+```
+')  open
+]
+
+{ #category : 'examples' }
 MicroUMLAstBuilder class >> exampleMicrodown [
 
 	^ (MicrodownPresenter new document: '
@@ -286,10 +302,10 @@ MicroUMLAstBuilder class >> exampleSerie2 [
 ^ MicroUMLAstBuilder
 ===
 #AbstractSeries % #abstract
-   --@ #TSearch
+"   --@ #TSearch
 	--@ #TArtifact
 	- #name @ String 
-	- #numEpisodes @ Integer % #abstract % #private
+	- #numEpisodes @ Integer % #abstract % #private"
 	|> #findByName ~#(String) @ #AbstractSeries
 === 
 #NovelSeries 
